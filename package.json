@@ -11,5 +11,9 @@
     "email": "jake33@rocketmail.com",
     "url": "http://jhartz.github.com/"
   },
-  "main": "jsonsettings.js"
+  "main": "jsonsettings.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jhartz/jsonsettings.git"
+  }
 }
