@@ -4,14 +4,16 @@ A simple way to read and write settings from a JSON file
 
 ## Usage
 
-    var jsonsettings = require("jsonsettings");
-    jsonsettings.default_settings_dir = "my_fav_settings";  // optional
-    var mysettings = new jsonsettings.SettingsFile({ ... options ... });
-    
-    mysettings.data  // the JSON data
-    
-    // When mysettings.data is changed, call mysettings.update() to write the changes back to the file
-    // (unless watchers are enabled - see below)
+```javascript
+var jsonsettings = require("jsonsettings");
+jsonsettings.default_settings_dir = "my_fav_settings";  // optional
+var mysettings = new jsonsettings.SettingsFile({ ... options ... });
+
+mysettings.data  // the JSON data
+
+// When mysettings.data is changed, call mysettings.update() to write the changes back to the file
+// (unless watchers are enabled - see below)
+```
 
 options:
 
@@ -28,13 +30,10 @@ If `use_watchers` is set to `true`, changes to settings values will automaticall
 
 Some notes on watchers:
 
-As soon as any property is modified, the JSON file will be automatically updated [IFF](http://en.wikipedia.org/wiki/Iff) the property already had a value. If it did not (or just to make sure), you must call `parent.setProp(name, value)`
-Example: Instead of `mysettings.data.bob = 2` use `mysettings.data.setProp("bob", 2)` or `mysettings.data.setProp("bob"); mysettings.data.bob = 2;`
-
-To get the "raw" value of any property, call `parent.getProp(name)`
-Example: Instead of `mysettings.data.foo.bar` use `mysettings.data.foo.getProp("bar")`
-
-If you do NOT use watchers, you must call `object.update()` after each modification (where `object` is a SettingsFile object)
+ - As soon as any property is modified, the JSON file will be automatically updated [IFF](http://en.wikipedia.org/wiki/Iff) the property already had a value.
+ - If the property did not already have a value (or if you are unsure), you must call `parent.setProp(name, value)`. Example: Instead of `mysettings.data.bob = 2` use `mysettings.data.setProp("bob", 2)` or `mysettings.data.setProp("bob"); mysettings.data.bob = 2;`
+ - To get the "raw" value of any property, call `parent.getProp(name)`. Example: Instead of `mysettings.data.foo.bar` use `mysettings.data.foo.getProp("bar")`
+ - If you do NOT use watchers, you must call `object.update()` after each modification (where `object` is a SettingsFile object)
 
 ## Examples
 
