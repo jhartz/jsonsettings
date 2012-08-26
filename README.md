@@ -1,6 +1,6 @@
 # jsonsettings
 
-A simple way to read and write settings from a JSON file
+An extremely simple [node.js](http://nodejs.org/) module to read/write settings from a [JSON](http://json.org/) file
 
 ## Usage
 
