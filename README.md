@@ -17,23 +17,22 @@ options:
 
  - **filename:** the name of the settings file (if not specified, you must manually call `load(filename)`)
  - **settings_dir:** the directory in which *filename* exists (default: `default_settings_dir`)
- - **use_watchers:** implement watchers on the JSON object to detect changes and automatically update the JSON file (default: false)
+ - **use_watchers:** implement [watchers](#watchers) on the JSON object to detect changes and automatically update the JSON file (default: false)
  - **onload:** `function ()` called after data is loaded
  - **onerror:** `function (err)` called on an error (instead of just throwing the error)
  - **onupdate:** `function ()` called after data file is updated without error
 
+## Watchers
+
+If `use_watchers` is set to `true`, changes to settings values will automatically be written back to the JSON file.
+
 Some notes on watchers:
 
-  - As soon as any property is modified, the JSON file will be automatically updated IFF the property already had a value. If it did not (or just to make sure), you must call `parent.setProp(name, value)`
-    Example:
-      Instead of `mysettings.data.bob = 2`
-      Do `mysettings.data.setProp("bob", 2)`
-      Or `mysettings.data.setProp("bob"); mysettings.data.bob = 2;`
+  - As soon as any property is modified, the JSON file will be automatically updated [IFF](http://en.wikipedia.org/wiki/Iff) the property already had a value. If it did not (or just to make sure), you must call `parent.setProp(name, value)`
+    - Example: Instead of `mysettings.data.bob = 2` use `mysettings.data.setProp("bob", 2)` or `mysettings.data.setProp("bob"); mysettings.data.bob = 2;`
 
   - To get the "raw" value of any property, call `parent.getProp(name)`
-    Example:
-      Instead of `mysettings.data.foo.bar`
-      Use `mysettings.data.foo.getProp("bar")`
+    - Example: Instead of `mysettings.data.foo.bar` use `mysettings.data.foo.getProp("bar")`
 
   - If you do NOT use watchers, you must call `object.update()` after each modification (where `object` is a SettingsFile object)
 
