@@ -78,3 +78,7 @@ server_config.data.setProp("bob", "jim");
 server_config.data.setProp("bob");
 server_config.data.bob = "jim";
 ```
+
+## License
+
+jsonsettings is licensed under the [MIT license](http://opensource.org/licenses/MIT)
