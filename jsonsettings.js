@@ -68,13 +68,13 @@ exports.SettingsFile = function (options) {
         var that = this;
         fs.readFile(path.join(this.options.settings_dir, this.options.filename), function (err, data) {
             if (err) {
-                that.onerror(err);
+                that.options.onerror(err);
             } else {
                 var JSONdata = null;
                 try {
                     JSONdata = JSON.parse(data);
                 } catch (tryerr) {
-                    that.onerror(tryerr);
+                    that.options.onerror(tryerr);
                 }
                 if (JSONdata) {
                     if (that.options.use_watchers) {
@@ -96,7 +96,7 @@ exports.SettingsFile = function (options) {
                     that.loaded = true;
                     that.options.onload();
                 } else {
-                    that.onerror("Invalid JSON!");
+                    that.options.onerror("Invalid JSON!");
                 }
             }
         });
